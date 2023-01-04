@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Job {
+  id          String     @id @default(uuid())
+  created_at  DateTime   @default(now())
+  updated_at  DateTime
+  title       String
+  salaryMin   Int
+  salaryMax   Int
+  description String
+  company     String
+  url         String
+  howToApply  String  @default("")
+  tags        Tag[]
+  locs        Location[] @relation("JobToLocation")
+}
+
+model Tag{
+  id String @id @default(uuid())
+  tag String
+  jobs  Job[]
+}
+
+model Location {
+  id      String @id @default(uuid())
+  city    String
+  country String
+  jobs    Job[]  @relation("JobToLocation")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id String @id @default(uuid())
+  created_at DateTime @default(now())
+  email String
+  role Role @default(USER)
+}
