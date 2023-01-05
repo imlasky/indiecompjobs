@@ -1,5 +1,5 @@
 <script>
-    import {filters} from "$lib/stores";
+    import JobTag from "./JobTag.svelte";
     // import { handleFilterClick } from "$lib/helpers";
 
     export let job;
@@ -9,19 +9,10 @@
         return cities.sort().join(' | ')
     }
 
-    function handleFilterClick(e) {
-        const tag = e.srcElement.textContent;
-        let newSet = $filters;
-        if ($filters.has(tag)) {
-            newSet.delete(tag)
-        } else {
-            newSet.add(tag)
-        }
-        filters.set(newSet)       
-    }
+    
 
 </script>
-<div class="collapse outline outline-1 rounded-lg bg-base-300 hover:bg-base-200 outline-neutral-300 shadow-lg hover:shadow-xl hover:outline-8 hover:outline-secondary">
+<div class="collapse outline outline-1 rounded-lg bg-base-200 hover:bg-base-200 outline-neutral-300 shadow-lg hover:shadow-xl hover:outline-8 hover:outline-secondary">
     <input type="checkbox" /> 
     
     <div class="collapse-title flex flex-row items-center space-x-2 text-xl font-medium">
@@ -38,7 +29,7 @@
         </div>
         <div class="lg:flex flex-row flex-wrap w-1/3 space-x-2 gap-y-2 hidden">
             {#each job.tags as tag (tag.id)}
-                <div on:click={handleFilterClick} class="badge badge-outline badge-lg hover:bg-primary hover:text-black z-50">{tag.tag}</div>
+                <JobTag {tag}/>
             {/each}
         </div>
 

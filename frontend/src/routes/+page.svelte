@@ -1,6 +1,7 @@
 <script>
     import JobList from "$lib/jobs/JobList.svelte";
     import FilterRow from "$lib/filters/FilterRow.svelte";
+    import Waves from "$lib/helpers/Waves.svelte";
 
     let email;
     let emailValid = false;
@@ -32,18 +33,14 @@
         
     }
 
-    function splitDescription(description){
-        return description.split("\\n")
-    }
-
     $: emailValid = re.test(email)
 
 </script>
 
-<div class="flex justify-center mt-12 mx-12">
+<div class="flex justify-center pt-20 pb-8 mx-12">
     <div class="flex flex-col">
-        <div class="flex flex-col max-w-3xl space-y-4">
-            <h1 class="text-2xl md:text-5xl font-bold text-primary text-center">Indie Company Jobs</h1>
+        <div class="flex flex-col max-w-4xl space-y-4">
+            <h1 class="text-4xl md:text-8xl font-bold text-center">Indie Company Jobs</h1>
             <h2 class="text-lg md:text-3xl font-bold text-center ">Find jobs at companies that have taken no outside investment and like it that way</h2>
         </div>
        
@@ -78,8 +75,9 @@
     
 </div>
 
-<div class="flex justify-center">
-    <div class="div flex flex-col w-full space-y-4">
+<Waves/>
+<div class="flex justify-center bg-zinc-50 ">
+    <div class="div flex flex-col w-full space-y-4 min-h-screen">
         <FilterRow />
         <JobList allJobs={data.allJobs}/>
     </div>
