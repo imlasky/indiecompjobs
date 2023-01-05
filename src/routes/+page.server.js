@@ -1,17 +1,10 @@
 import { error } from '@sveltejs/kit';
-import { db } from '$lib/db';
-
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ params }) {
+export async function load({ fetch }) {
 
-    const allJobs = await db.Job.findMany({
-        include: {
-            locs: true,
-            tags: true,
-        }
-    });
-    
+    const response = await fetch('/jobs');
+    const allJobs = await response.json()
     return {allJobs};
 
 }
