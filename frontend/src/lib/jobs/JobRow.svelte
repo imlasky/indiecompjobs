@@ -3,6 +3,7 @@
     // import { handleFilterClick } from "$lib/helpers";
 
     export let job;
+    let showApply = false;
 
     function formatLocations(locations) {
         const cities = locations.map(loc => loc.city )
@@ -11,8 +12,11 @@
 
     
 
+    
+
 </script>
-<div class="collapse outline outline-1 rounded-lg bg-base-200 hover:bg-base-200 outline-neutral-300 shadow-lg hover:shadow-xl hover:outline-8 hover:outline-secondary">
+<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+<div on:mouseenter={() => {showApply = !showApply}} on:mouseleave={() => {showApply = !showApply}} class="collapse outline outline-1 rounded-lg bg-base-300 shadow-lg hover:bg-base-200 hover:shadow-xl hover:ring-8 hover:ring-secondary">
     <input type="checkbox" /> 
     
     <div class="collapse-title flex flex-row items-center space-x-2 text-xl font-medium">
@@ -31,6 +35,11 @@
             {#each job.tags as tag (tag.id)}
                 <JobTag {tag}/>
             {/each}
+        </div>
+        <div class="flex justify-end w-1/4 z-50">
+            {#if showApply}
+                <a href={job.url} class="btn btn-primary">Apply</a>
+            {/if}
         </div>
 
     </div>
