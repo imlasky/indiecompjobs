@@ -1,7 +1,4 @@
 {
-	"engines": {
-		"node": "18.12.1"
-	},
 	"name": "indiecompjobs",
 	"version": "0.0.1",
 	"private": true,
