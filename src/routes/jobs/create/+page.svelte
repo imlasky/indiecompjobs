@@ -1,1 +1,0 @@
-<p>Jobs create page</p>

@@ -12,3 +12,7 @@ export async function GET(){
     });
     return json(allJobs)
 }
+
+export async function POST() {
+    return Response()
+}
