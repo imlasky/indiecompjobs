@@ -13,6 +13,8 @@ export async function GET(){
     return json(allJobs)
 }
 
-export async function POST() {
-    return new Response()
+export async function POST({request}) {
+
+    
+    return new Response(request.body)
 }

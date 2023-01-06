@@ -37,7 +37,7 @@
 
 </script>
 
-<div class="flex justify-center pt-12 pb-8 mx-12">
+<div class="flex justify-center pt-20 pb-8 mx-12">
     <div class="flex flex-col">
         <div class="flex flex-col max-w-4xl space-y-4">
             <h1 class="text-4xl md:text-8xl font-bold text-center">Indie Company Jobs</h1>
